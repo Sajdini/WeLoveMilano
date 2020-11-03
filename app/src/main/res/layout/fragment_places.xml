@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/places_to_visit"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        style="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+
+    <TextView
+        android:id="@+id/text_view_title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/slateGrey"
+        android:text="@string/_1_il_duomo"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/image_view_1st"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ilduomo"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="10dp"
+         />
+
+    <TextView
+        android:id="@+id/text_view_description1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image_view_1st"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/slateGrey"
+        android:layout_marginTop="3dp"
+        android:text="@string/string_text_1"
+        style="@style/TextAppearance.AppCompat"/>
+
+
+
+        <TextView
+            android:id="@+id/text_view_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/slateGrey"
+            android:textStyle="bold"
+            android:text="@string/_2_galleria_vittorio_emanuele_ii"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/image_view_2nd"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/galleria_vittorio"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_2nd"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="3dp"
+            android:text="@string/string_text_2"
+            style="@style/TextAppearance.AppCompat"/>
+
+        <TextView
+            android:id="@+id/text_view_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/castello_sforzesco"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/slateGrey"/>
+
+        <ImageView
+            android:id="@+id/image_view_3rd"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/castello_sforzesco"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_description3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_3rd"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="3dp"
+            android:text="@string/string_text_3"
+            style="@style/TextAppearance.AppCompat"/>
+
+        <TextView
+            android:id="@+id/text_view_title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description3"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/sant_ambrogio"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/slateGrey"/>
+
+        <ImageView
+            android:id="@+id/image_view_4"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/sant_ambrogio"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_description4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="3dp"
+            android:text="@string/string_text_4"
+            style="@style/TextAppearance.AppCompat"/>
+
+        <TextView
+            android:id="@+id/text_view_title5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description4"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/leonardo_da_vinci_national_museum_of_science_and_technology"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/slateGrey"/>
+
+        <ImageView
+            android:id="@+id/image_view_5"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/davinci_museum"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_description5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="3dp"
+            android:text="@string/string_text_5"
+            style="@style/TextAppearance.AppCompat"/>
+
+        <TextView
+            android:id="@+id/text_view_title6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description5"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/naviglio"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/slateGrey"/>
+
+        <ImageView
+            android:id="@+id/image_view_6"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title6"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/naviglio"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_description6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_6"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="3dp"
+            android:text="@string/string_text_6"
+            style="@style/TextAppearance.AppCompat"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

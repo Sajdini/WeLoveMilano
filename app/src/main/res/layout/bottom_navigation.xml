@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="#fff">
 
     <TextView
-    android:id="@+id/text_view_home"
+    android:id="@+id/text_view_places"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:drawablePadding="6dp"
     android:gravity="center"
     android:paddingTop="5dp"
-    android:text="1" />
+    android:drawableTop="@drawable/visiting_places"
+    android:text="Places to Visit" />
 
     <TextView
         android:id="@+id/text_view_map"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:drawableTop="@drawable/drawable_map"
         android:drawablePadding="6dp"
         android:gravity="center"
         android:paddingTop="5dp"
-        android:text="2"
-         />
+        android:text="Map" />
 
     <TextView
         android:id="@+id/text_view_list"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:drawableTop="@drawable/restaurant_icon"
         android:drawablePadding="6dp"
         android:gravity="center"
         android:paddingTop="5dp"
-        android:text="3"/>
+        android:text="Restaurants"/>
 
     <TextView
         android:id="@+id/text_view_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:drawableTop="@drawable/info_icon"
         android:drawablePadding="6dp"
         android:gravity="center"
         android:paddingTop="5dp"
-        android:text="4"
+        android:text="Info"
          />
 
 </LinearLayout>

@@ -1,6 +1,6 @@
 package com.gsixacademy.android.welovemilano.models
 
-class user_rating (
+class UserRating (
     val agregate_rating: String?,
     val rating_text:String?,
     )

@@ -1,105 +1,47 @@
 package com.gsixacademy.android.welovemilano
 
-import android.annotation.SuppressLint
-import android.content.pm.PackageManager
+
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.gsixacademy.android.welovemilano.api.ApiServiceBuilder
-import com.gsixacademy.android.welovemilano.api.MilanoDatabaseApi
+import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.gsixacademy.android.welovemilano.models.MilanoListResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.gsixacademy.android.welovemilano.models.RestaurantData
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_navigation.*
 
+class MainActivity : AppCompatActivity() {
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
-    private lateinit var map: GoogleMap
-    private  var milanoListResponse: MilanoListResponse?=null
+    lateinit var navController: NavController
+    lateinit var navListener: NavController.OnDestinationChangedListener
+     lateinit var restaurantData:RestaurantData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val request = ApiServiceBuilder.buildService(MilanoDatabaseApi::class.java)
-
-        val call = request.getSearch(258,"city")
-        call.enqueue(object : Callback<MilanoListResponse> {
-            override fun onFailure(call: Call<MilanoListResponse>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "api error", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(
-                call: Call<MilanoListResponse>,
-                response: Response<MilanoListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    milanoListResponse = response.body()
-                    for (item in milanoListResponse?.restaurants!!) {
-                        Log.d("restorantName","${item.restaurant?.name}")
-                    }
-                }
-            }
-        })
-
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_map) as SupportMapFragment
-        mapFragment.getMapAsync { this }
+        navController = Navigation.findNavController(this, R.id.navigation_host_fragment)
+        initListeners()
     }
-
-    fun getLocationPermission(): Boolean {
-        val permissions = ArrayList<String>()
-        if (!isPermissionGranted(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-            permissions.add(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        }
-        if (permissions.isNotEmpty()) {
-            ActivityCompat.requestPermissions(this, permissions.toTypedArray(), 2000)
-            return false
-        } else
-            return true
-    }
-
-    private fun isPermissionGranted(permission: String): Boolean {
-        return this.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == 2002) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                updateLocationUI()
-            }
+fun initListeners(){
+    navListener=NavController.OnDestinationChangedListener{controller, destination, arguments ->
+        when(destination.id){
+            R.id.placesFragment->{navigation_bottom_view.visibility= View.VISIBLE
+            navigation_bottom_view.setSelectedTab(1)}
+            R.id.mapFragment->{navigation_bottom_view.visibility= View.VISIBLE
+            navigation_bottom_view.setSelectedTab(2)}
+            R.id.restaurantFragment->{navigation_bottom_view.visibility= View.VISIBLE
+            navigation_bottom_view.setSelectedTab(3)}
+            R.id.infoFragment->{ navigation_bottom_view.visibility= View.VISIBLE
+            navigation_bottom_view.setSelectedTab(4)}
         }
     }
+    navController.addOnDestinationChangedListener(navListener)
+    text_view_places.setOnClickListener { navController.navigate(R.id.action_global_placesFragment) }
+    text_view_map.setOnClickListener { navController.navigate(R.id.action_global_mapFragment) }
+    text_view_list.setOnClickListener {  navController.navigate(R.id.action_global_restaurantFragment)}
+    text_view_info.setOnClickListener { navController.navigate(R.id.action_global_infoFragment) }
+}
 
-    @SuppressLint("MissingPermission")
-    private fun updateLocationUI() {
-        if (isPermissionGranted(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-            map.isMyLocationEnabled = true
-            map.uiSettings.isMyLocationButtonEnabled = true
-        } else {
-            map.isMyLocationEnabled = false
-            map.uiSettings.isMyLocationButtonEnabled = false
-            getLocationPermission()
-        }
-    }
-
-
-    override fun onMapReady(googlemap: GoogleMap) {
-        map = googlemap
-        map.setOnMapLoadedCallback {
-
-
-        }
-
-    }
 }

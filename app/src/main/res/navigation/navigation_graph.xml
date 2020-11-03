@@ -10,12 +10,52 @@
         android:name="com.gsixacademy.android.welovemilano.SplashFragment"
         android:label="SplashFragment" >
         <action
-            android:id="@+id/action_splashFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_splashFragment_to_placesFragment"
+            app:destination="@id/placesFragment"
+            app:popUpTo="@id/placesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.gsixacademy.android.welovemilano.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.gsixacademy.android.welovemilano.fragments.InfoFragment"
+        android:label="InfoFragment" />
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.gsixacademy.android.welovemilano.fragments.RestaurantFragment"
+        android:label="RestaurantFragment" >
+        <action
+            android:id="@+id/action_restaurantFragment_to_restaurantDetailsFragment"
+            app:destination="@id/restaurantDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placesFragment"
+        android:name="com.gsixacademy.android.welovemilano.fragments.PlacesFragment"
+        android:label="PlacesFragment" />
+    <action
+        android:id="@+id/action_global_infoFragment"
+        app:destination="@id/infoFragment"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_placesFragment"
+        app:destination="@id/placesFragment"
+        app:launchSingleTop="true" />
+    <action
+        android:id="@+id/action_global_restaurantFragment"
+        app:destination="@id/restaurantFragment"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.gsixacademy.android.welovemilano.fragments.MapFragment"
+        android:label="MapFragment" />
+    <action
+        android:id="@+id/action_global_mapFragment"
+        app:destination="@id/mapFragment"
+        app:launchSingleTop="true"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/restaurantDetailsFragment"
+        android:name="com.gsixacademy.android.welovemilano.fragments.RestaurantDetailsFragment"
+        android:label="RestaurantDetailsFragment" />
 </navigation>

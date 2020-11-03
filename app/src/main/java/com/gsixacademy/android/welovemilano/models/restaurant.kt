@@ -1,6 +1,6 @@
 package com.gsixacademy.android.welovemilano.models
 
-class restaurant (
+class Restaurant (
 val restaurant: RestaurantData?
 
 )

@@ -1,6 +1,6 @@
 package com.gsixacademy.android.welovemilano
 
-import android.graphics.Typeface
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,13 +16,13 @@ class SplashFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_splash,container)
+        return inflater.inflate(R.layout.fragment_splash,container,false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         fab_next_screen.setOnClickListener {
-            findNavController().navigate(R.id.action_splashFragment_to_mainActivity)
+            findNavController().navigate(R.id.action_splashFragment_to_placesFragment)
         }
 
     }
