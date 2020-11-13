@@ -1,6 +1,8 @@
 package com.gsixacademy.android.welovemilano.models
 
-class Restaurant (
-val restaurant: RestaurantData?
+import com.google.firebase.database.IgnoreExtraProperties
 
-)
+@IgnoreExtraProperties
+class Restaurant {
+    val restaurant: RestaurantData? =null
+}

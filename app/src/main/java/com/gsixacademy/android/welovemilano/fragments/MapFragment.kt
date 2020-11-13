@@ -10,25 +10,20 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.gsixacademy.android.welovemilano.R
 import com.gsixacademy.android.welovemilano.api.ApiServiceBuilder
 import com.gsixacademy.android.welovemilano.api.MilanoDatabaseApi
-import com.gsixacademy.android.welovemilano.models.Location
 import com.gsixacademy.android.welovemilano.models.MilanoListResponse
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 
 class MapFragment: Fragment(),OnMapReadyCallback {
     private lateinit var map: GoogleMap
-    private var milanoListResponse:MilanoListResponse?=null
-    private var location:Location?=null
+    private lateinit var marker: Marker
+    private var milanoListResponse: MilanoListResponse? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,46 +39,53 @@ class MapFragment: Fragment(),OnMapReadyCallback {
 
         mapFragment.getMapAsync(this)
         val request = ApiServiceBuilder.buildService(MilanoDatabaseApi::class.java)
-        val call=request.getSearch(258,"city")
-        call.enqueue(object :Callback<MilanoListResponse>{
+        val call = request.getSearch(258, "city")
+        call.enqueue(object : Callback<MilanoListResponse> {
             override fun onFailure(call: Call<MilanoListResponse>, t: Throwable) {
-                Toast.makeText(activity,"api error", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "api error", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(
                 call: Call<MilanoListResponse>,
                 response: Response<MilanoListResponse>
             ) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     milanoListResponse = response.body()
-                    for (item in milanoListResponse?.restaurants!!) {
-                        Log.d("restorantName","${item.restaurant?.name}")
-                        val builder=LatLngBounds.builder()
-                        val markerOptions = MarkerOptions().position(
-                            LatLng(location?.latitude!!.toDouble(),location?.longitude!!.toDouble()))
-                            .title(item.restaurant?.name)
-                            .snippet(getString(R.string.see_more))
-                        builder.include(markerOptions.position)
-                        map.addMarker(markerOptions).tag = item.restaurant?.id
-                        val bounds=builder.build()
-                        val padding=90
-                        val cameraUpdate= CameraUpdateFactory.newLatLngBounds(bounds,padding)
-                        map.moveCamera(cameraUpdate)
+                    if (::map.isInitialized) {
+                        val builder = LatLngBounds.builder()
+                        for (item in milanoListResponse?.restaurants!!) {
+                            Log.d("restorantName", "${item.restaurant?.name}")
+                            val markerOptions = MarkerOptions().position(
+                                LatLng(
+                                    (item.restaurant?.location?.latitude ?: 0.0),
+                                    (item.restaurant?.location?.longitude ?: 0.0)
+
+                                )
+                            )
+                                .title(item.restaurant?.name)
+                                .snippet(getString(R.string.see_more))
+                            builder.include(markerOptions.position)
+                            map.addMarker(markerOptions).tag = item.restaurant?.id
+                            val bounds = builder.build()
+                            val padding = 90
+                            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+                            map.moveCamera(cameraUpdate)
+
+                        }
                     }
                 }
             }
-
         })
-    }
-
-
-    override fun onMapReady(p0: GoogleMap?) {
-        if (p0 != null) {
-            p0.setMapStyle(MapStyleOptions.loadRawResourceStyle(activity, R.raw.my_map_style))
-        }
 
     }
 
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        map.uiSettings.isZoomControlsEnabled = true
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(activity, R.raw.my_map_style))
+
+    }
 
 }
 

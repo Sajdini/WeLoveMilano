@@ -1,5 +1,8 @@
 package com.gsixacademy.android.welovemilano.models
 
-class MilanoListResponse (
-    val restaurants: ArrayList<Restaurant>?
-)
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
+class MilanoListResponse {
+    val restaurants: ArrayList<Restaurant>?=null
+}

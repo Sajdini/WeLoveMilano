@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1006516402980",
+    "firebase_url": "https://welovemilano.firebaseio.com",
+    "project_id": "welovemilano",
+    "storage_bucket": "welovemilano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006516402980:android:9f4c28f0581e32bb53d1b1",
+        "android_client_info": {
+          "package_name": "com.gsixacademy.android.welovemilano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006516402980-6ifmcdk6v8b8q8bmqsm6al3cbh179f45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbWOc-1PVjPq8-y76tHZ5jRiypjpqEpbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006516402980-6ifmcdk6v8b8q8bmqsm6al3cbh179f45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

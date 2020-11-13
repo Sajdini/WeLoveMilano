@@ -48,7 +48,11 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.gsixacademy.android.welovemilano.fragments.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_restaurantDetailsFragment"
+            app:destination="@id/restaurantDetailsFragment" />
+    </fragment>
     <action
         android:id="@+id/action_global_mapFragment"
         app:destination="@id/mapFragment"

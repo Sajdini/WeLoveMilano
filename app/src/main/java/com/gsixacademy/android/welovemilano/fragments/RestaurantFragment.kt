@@ -1,6 +1,5 @@
 package com.gsixacademy.android.welovemilano.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +14,7 @@ import com.gsixacademy.android.welovemilano.api.ApiServiceBuilder
 import com.gsixacademy.android.welovemilano.api.MilanoDatabaseApi
 
 import com.gsixacademy.android.welovemilano.models.MilanoListResponse
+import com.gsixacademy.android.welovemilano.models.Restaurant
 
 import kotlinx.android.synthetic.main.fragment_restaurant.*
 
@@ -54,7 +54,7 @@ class RestaurantFragment:Fragment() {
                     recycler_view_list.adapter = RestaurantAdapter(restaurantData) {
                         if (it is RestaurantClickEvent.OnRestaurantClickEvent) {
                             var bundle = Bundle()
-                            bundle.putString("restaurantName", it.rest?.restaurant?.name)
+                            bundle.putParcelable("rest",it.rest)
                         findNavController().navigate(R.id.action_restaurantFragment_to_restaurantDetailsFragment)
                         }
 
@@ -66,6 +66,16 @@ class RestaurantFragment:Fragment() {
         })
     }
         }
+
+private fun Bundle.putParcelable(s: String, rest: Restaurant) {
+
+}
+
+
+
+
+
+
 
 
 

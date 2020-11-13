@@ -4,66 +4,89 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:id="@+id/activity_list_item"
+    android:background="@drawable/list_item_frame"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/text_view_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:paddingLeft="4dp"
-        android:paddingTop="1dp"
-        android:text="Restaurant"
-        android:textSize="20sp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/image_view_restaurant">
 
-    <TextView
-        android:id="@+id/text_view_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_name"
-        android:text="Description"
-        android:paddingLeft="4dp"
-        android:paddingTop="4dp"
-        android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="4dp"
+            android:paddingTop="1dp"
+            android:text="Restaurant"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_name"
+            android:text="Description"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:textSize="15sp"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:id="@+id/text_view_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_description"
+            app:layout_constraintStart_toEndOf="@id/text_view_rating"
+            android:text="Review"
+            android:paddingLeft="4dp"/>
+
+        <TextView
+            android:id="@+id/text_view_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_description"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Rating"
+            android:paddingLeft="4dp"
+            />
+        <ImageView
+
+            app:layout_constraintTop_toBottomOf="@id/text_view_rating"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="4dp"
+            android:id="@+id/rating_image_view"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/rate_02_hdpi"/>
+        <TextView
+            android:id="@+id/text_view_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/rating_image_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Adress"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="4dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/Image_view_restaurant"
+        android:id="@+id/image_view_restaurant"
         android:layout_width="150dp"
         android:layout_height="match_parent"
-        android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="5dp"
         tools:ignore="RtlSymmetry" />
 
-    <TextView
-        android:id="@+id/text_view_review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_view_description"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Review"
-        android:paddingLeft="4dp"/>
 
-        <TextView
-         android:id="@+id/text_view_rating"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         app:layout_constraintTop_toBottomOf="@id/text_view_description"
-         app:layout_constraintStart_toEndOf="@id/text_view_review"
-         android:text="Rating"
-         android:paddingLeft="4dp"
-        />
 
-    <TextView
-        android:id="@+id/text_view_adress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_view_review"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Adress"
-        android:paddingLeft="4dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

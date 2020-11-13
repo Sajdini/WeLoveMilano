@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
     lateinit var navListener: NavController.OnDestinationChangedListener
-     lateinit var restaurantData:RestaurantData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
